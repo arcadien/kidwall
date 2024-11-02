@@ -10,6 +10,7 @@ RUN apt-get update \
     gcc \
     git \
     vim \
+    openssh-server \
     clang-format \
     python3 \
     python3-dev \
