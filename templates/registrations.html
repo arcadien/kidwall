@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{% block title %} Applications management {% endblock %}</h2>
+
+
+{% for registration in registrations %}
+
+<div>
+    <div id="cal-heatmap-{{registration.app.name}}">
+
+        <script>
+            cal = new CalHeatmap();
+            cal.paint({
+                itemSelector: '#cal-heatmap-{{registration.app.name}}',
+                range: 7,
+                domain: { type: 'day' },
+                subDomain: { type: 'hour', label: 'HH' },
+            }, [[Legend, { "label": "{{registration.app.name}}" }]]);
+        </script>
+        <ul>
+            <li>Allowed: {{registration.isAllowed}}</li>
+            <li>Active: {{registration.app.isActive}}</li>
+        </ul>
+    </div>
+    {% endfor %}
+    {% endblock %}
